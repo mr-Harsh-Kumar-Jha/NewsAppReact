@@ -12,7 +12,7 @@ const NewsItem = (props)=> {
    const [articles, setarticles] = useState([]);
    const [page, setpage] = useState(1);
    // const [countries, setcountries] = useState('ar');
-
+console.log("country in newsitem", props.country);
 
    const updateNews=async()=> {
       let url =  `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${apiKey}&page=${page+1}&pageSize=${props.pageSize}`;
@@ -29,7 +29,7 @@ const NewsItem = (props)=> {
       document.title=`NewsMonkey -${props.category}`;
       updateNews();
       console.log(props.country);
-   }, [])
+   }, [props.country,props.category])  // u have to pass dependenties (i.e is we have to mention when we want to perticularly run this useeffect command).
 
 
    // const componentDidMount=async ()=> {    //this is used in class based componenet whereas its replacement be like....
