@@ -9,7 +9,7 @@ const NewsItem = (props)=> {
    const apiKey=process.env.REACT_APP_NEWS_API;
    const [loading, setloading] = useState(true);
    const [totalResults, settotalResults] = useState(0);
-   const [articles, setarticles] = useState([]);
+   const [articles, setarticles] = useState([ ]);
    const [page, setpage] = useState(1);
    // const [countries, setcountries] = useState('ar');
 console.log("country in newsitem", props.country);
@@ -19,8 +19,8 @@ console.log("country in newsitem", props.country);
       setloading(true);
       let data = await fetch(url);
       let parcedData = await data.json();
-      setarticles(parcedData.articles);
-      settotalResults(parcedData.totalResults);
+      setarticles(parcedData?parcedData.articles:[ ]);
+      settotalResults(parcedData?parcedData.totalResults : 0);
       // setcountries(props.country);
       setloading(false);
    }
@@ -29,7 +29,7 @@ console.log("country in newsitem", props.country);
       document.title=`NewsMonkey -${props.category}`;
       updateNews();
       console.log(props.country);
-   }, [props.country,props.category])  // u have to pass dependenties (i.e is we have to mention when we want to perticularly run this useeffect command).
+   }, [props.country, props.category])  // u have to pass dependenties (i.e is we have to mention when we want to perticularly run this useeffect command).
 
 
    // const componentDidMount=async ()=> {    //this is used in class based componenet whereas its replacement be like....
@@ -52,8 +52,8 @@ console.log("country in newsitem", props.country);
       let url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${apiKey}&page=${page+1}&pageSize=${props.pageSize}`;
       let data = await fetch(url);
       let parcedData = await data.json();
-      setarticles(articles.concat(parcedData.articles));
-      settotalResults(parcedData.totalResults);
+      setarticles(parcedData?articles.concat(parcedData.articles):[ ]);
+      settotalResults(parcedData?parcedData.totalResults :0);
       // setcountries(props.country);
 
    };
@@ -63,7 +63,7 @@ console.log("country in newsitem", props.country);
             <h1 className='text-center'>NewsMonkey - Top HeadLines</h1>
             {loading && <GIF />}
             <InfiniteScroll
-               dataLength={articles.length}
+               dataLength={articles.length || 0}
                next={fetchMoreData}
                hasMore={articles.length !== totalResults}
                loader={<GIF />} >

@@ -1,4 +1,5 @@
 {
+   "homepage": "https://newsmonkey-three.vercel.app/",
   "name": "newsapp",
   "version": "0.1.0",
   "private": true,
@@ -38,5 +39,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "engines": {
+   "node": "^16.14.1",
+   "npm": "^8.11.0"
+}
 }

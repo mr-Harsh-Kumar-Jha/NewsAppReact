@@ -1,7 +1,7 @@
 import React ,{useState} from 'react'
 // import NewsItem from './newsItem';
 
-const Country = ({setCountry,country})=> {
+const Country = ({setCountry})=> {
    const [countries, setCountries] = useState('India');
    // const func = (cont)=> {
    //    setcountries(cont); ̑z
@@ -22,15 +22,19 @@ const Country = ({setCountry,country})=> {
                   <li onClick={()=>{
                       setCountry('ar');
                       setCountries('Argentina');
-                  }}>  <span className="nav-link active dropdown-item"value="/ar">Argentina</span> </li>
+                  }}>  <span className=" active dropdown-item"value="/ar">Argentina</span> </li>
                   <li onClick={()=>{
                       setCountry('ae');
                       setCountries('UAE');
-                  }}> <span className="nav-link active dropdown-item"value="/ae">UAE</span></li>
+                  }}> <span className=" active dropdown-item"value="/ae">UAE</span></li>
                   <li  onClick={()=>{
                       setCountry('at');
                       setCountries('Austria');
-                  }}> <span className="nav-link active dropdown-item"value="/at">Austria</span></li>
+                  }}> <span className=" active dropdown-item"value="/at">Austria</span></li>
+                     <li  onClick={()=>{
+                      setCountry('au');
+                      setCountries('Australia');
+                  }}> <span className=" active dropdown-item"value="/at">Australia</span></li>
                </ul>
             </div>
          </>
