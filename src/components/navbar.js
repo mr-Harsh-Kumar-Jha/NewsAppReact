@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Country from './country'
 
-const Navbar=({setCountry}) => {
+const Navbar=(props) => {
       return (
          <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
             <div className="container-fluid d-flex justify-content-between">
@@ -34,7 +34,7 @@ const Navbar=({setCountry}) => {
                         <Link className="nav-link" to="/science">Science</Link>
                      </li>
                   </ul>
-                  <Country setCountry={setCountry} />
+                  <Country setCountry={props.setCountry} />
                </div>
             </div>
          </nav>
